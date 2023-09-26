@@ -1,0 +1,17 @@
+{
+    "name": "fernanda/projeto-psr",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fernandafmsf",
+            "email": "fernandafernandesauto@gmail.com"
+        }
+    ],
+    "require": {}
+}
