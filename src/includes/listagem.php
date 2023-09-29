@@ -5,4 +5,18 @@
     </button>
   </section>
 
+  <section>
+    <table class="table container mt-3">
+      <thead>
+        <tr>
+          <td>Titulo</td>
+          <td>Descrição</td>
+          <td>Status </td>
+          <td>Data</td>
+          <td>Ação</td>
+        </tr>
+      </thead>
+    </table>
+  </section>
+
 </main>
