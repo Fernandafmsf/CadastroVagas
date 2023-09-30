@@ -2,6 +2,8 @@
 
 require_once './vendor/autoload.php';
 
+define('TITLE', 'Editar vaga');
+
 use src\model\Vaga;
 
 if(!isset($_GET['id']) or (!is_numeric($_GET['id']) )){
@@ -9,18 +11,27 @@ if(!isset($_GET['id']) or (!is_numeric($_GET['id']) )){
   exit;
 }
 
-$editVaga=Vaga::getVaga($_GET['id']);
+
+$vagaID= $_GET['id'];
+
+$obVaga=Vaga::getVaga($vagaID); //há uma instancia de fora, por isso é possivel usar
+
+//validaçao da vaga 
+//se obvaga nao for uma instancia de vaga, retornamos ao index
+if(!$obVaga instanceof Vaga){
+  header('location: index.php?status=error');
+  exit;
+}
 
 
+if(isset($_POST['titulo'], $_POST['descricao'], $_POST['ativo'])) {
 
-if(isset($_POST['Enviar'])){
-  $vaga = new Vaga;
 
-  $vaga->titulo = $_POST['titulo']; //enviando dados 
-  $vaga->descricao = $_POST['descricao'];
-  $vaga->ativo = $_POST['ativo'];
+  $obVaga->titulo = $_POST['titulo']; //enviando dados 
+  $obVaga->descricao = $_POST['descricao'];
+  $obVaga->ativo = $_POST['ativo'];
 
-  $vaga->cadastrar(); //chamando funçao cadastrar, que como padrao ja faz a conexao com o db e informa a tabela 
+ $obVaga->atualizar(); 
  
   header('location: index.php?status=success');
   exit; //colocar sempre que tiver um header. Evita que o restante da pagina seja executada 

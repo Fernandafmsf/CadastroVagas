@@ -25,6 +25,16 @@ class Vaga{
     return true;
   }
 
+  public function atualizar(){
+    return(new Database('vagas'))->update(' id= '.$this->id,[
+      'titulo' => $this->titulo,
+      'descricao' => $this->descricao,
+      'ativo' => $this->ativo,
+      'data' => $this->data
+    ]);
+    return true;
+  }
+
   // estatico pois retorna arrays com varias instancias de vagas e nao precisamos de uma instancia real no momento
   public static function getVagas($where=null, $order=null, $limit=null){ 
   
@@ -33,8 +43,7 @@ class Vaga{
   }
   //Buscar vaga com base em id
   public static function getVaga($id){
-    return (new Database('vagas'))->select('id='.$id)
-                                    ->fetchObject(self::class);
+    return (new Database('vagas'))->select(' id= '.$id) ->fetchObject(self::class);
                                   
   }
 

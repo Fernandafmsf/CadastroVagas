@@ -68,22 +68,35 @@
     $binds = array_pad([],count($fields), '?'); //inicia array vazio, cria tantos elementos quanto se tem em $fields e preenche com '?' 
     
 
-    $q='INSERT into '.$this->table.'('.implode(',' ,$fields).') VALUES ('.implode(',',$binds).')'; //testar outros formato depois 
+    $q='INSERT INTO '.$this->table.'('.implode(',' ,$fields).') VALUES ('.implode(',',$binds).')'; //testar outros formato depois 
     
     $this->execute($q, array_values($values));//executa insert 
     return $this->conn->lastInsertId(); // retorna ultimo id inserido
 
   }
 
-  public function select($where=null,$order=null,$limit=null)
+  public function select($where=null,$order=null,$limit=null, )
   {
     //verificando se foi passado parametro e preeenchendo caso tiver sido
     $where = strlen($where) ? 'WHERE' .$where : '';
     $order = strlen($order) ? 'ORDER BY' .$order : '';
     $limit = strlen($limit) ? 'LIMIT' .$limit : '';
+   
 
     $q='SELECT * FROM '.$this->table.' '.$where. ' ' .$order.' '.$limit;
     return $this->execute($q);
+  }
+
+  public function update($where, $values){
+    $fields = array_keys($values);
+
+    $q='UPDATE '.$this->table.' SET '
+      .implode('=?, ',$fields).'=? WHERE'
+      .$where;
+    
+    $this->execute($q, array_values($values));
+
+    return true;
   }
 
 

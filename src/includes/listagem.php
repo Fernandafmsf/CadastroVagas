@@ -6,11 +6,14 @@ foreach ($vagas as $vaga) {
                       <td>'.$vaga->titulo.'</td>
                       <td>'.$vaga->descricao.'</td>
                       <td>'.($vaga->ativo =='s'? 'Ativo':'Inativo').'</td>
-                      <td>'.date('d/m/Y à\s H:i:s', strtotime($vaga->data)).'</td>
+                      <td>'.date('d/m/Y à\s H:i:s', strtotime($vaga->data)). '</td>
                       <td>
-                        <a href="editar.php?id='.$vaga->id.'">
-                            <button type="button" class="btn btn-primary">Editar</button>
-                        </a>
+                        <button type="button" class="btn btn-primary">
+                          <a class="nav-link" href="editar.php?id=' . $vaga->id . '">
+                          Editar
+                          </a>
+                        </button>                    
+                        
                         <a href="excluir.php?id='.$vaga->id.'">
                           <button type="button" class="btn btn-danger">Excluir</button>  
                         </a>
@@ -27,8 +30,8 @@ foreach ($vagas as $vaga) {
       </button>
     </section>
 
-    <section>
-      <table class="table container mt-3">
+    <section class="container-sm">
+      <table class="table table-striped table-hover table-bordered mt-3">
         <thead>
           <tr>
             <td>Titulo</td>
