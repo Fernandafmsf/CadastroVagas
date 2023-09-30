@@ -31,6 +31,12 @@ class Vaga{
     return (new Database('vagas'))->select($where,$order,$limit)->fetchAll(PDO::FETCH_CLASS, self::class); //fetch_Class-> define o tipo do array como classe, declarando a classe como a propria
 
   }
+  //Buscar vaga com base em id
+  public static function getVaga($id){
+    return (new Database('vagas'))->select('id='.$id)
+                                    ->fetchObject(self::class);
+                                  
+  }
 
 
 }
