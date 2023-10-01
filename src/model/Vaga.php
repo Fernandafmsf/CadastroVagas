@@ -25,7 +25,8 @@ class Vaga{
     return true;
   }
 
-  public function atualizar(){
+  public function atualizar()
+  {
     return(new Database('vagas'))->update(' id= '.$this->id,[
       'titulo' => $this->titulo,
       'descricao' => $this->descricao,
@@ -33,6 +34,12 @@ class Vaga{
       'data' => $this->data
     ]);
     return true;
+  }
+
+  public function excluir()
+  {
+    return (new Database('vagas'))->delete(' id= '.$this->id);
+
   }
 
   // estatico pois retorna arrays com varias instancias de vagas e nao precisamos de uma instancia real no momento

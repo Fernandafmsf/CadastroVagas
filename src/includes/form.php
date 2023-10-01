@@ -1,3 +1,4 @@
+
 <main>
   <section class="container">
     <button class="btn btn-success">
@@ -6,7 +7,7 @@
   </section>
 
   <section class="container">
-    <h2 class="mt-3"><?= TITLE?></h2>
+    <h2 class="mt-3"><?= TITLE ?></h2>
 
     <form method="post">
       <div>
@@ -17,7 +18,7 @@
 
       <div>
         <label for="descricao">Descriçao</label>
-        <textarea name="descricao" class="form-control" required><?=$obVaga->descricao ?></textarea>
+        <textarea name="descricao" class="form-control" required><?= $obVaga->descricao ?></textarea>
       </div>
       <br>
 
@@ -33,19 +34,17 @@
 
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="n" 
-              <?= $obVaga->ativo =='n' ? 'checked':' ' ?>
-              > Inativo
+              <input type="radio" name="ativo" value="n" <?= $obVaga->ativo == 'n' ? 'checked' : ' ' ?>> Inativo
             </label>
           </div>
         </div>
 
       </div>
       <br>
-
       <div>
         <button type="submit" name="Enviar" class="btn btn-success">Enviar</button>
       </div>
+
 
 
     </form>

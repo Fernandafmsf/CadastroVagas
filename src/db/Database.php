@@ -87,7 +87,8 @@
     return $this->execute($q);
   }
 
-  public function update($where, $values){
+  public function update($where, $values)
+  {
     $fields = array_keys($values);
 
     $q='UPDATE '.$this->table.' SET '
@@ -95,7 +96,13 @@
       .$where;
     
     $this->execute($q, array_values($values));
+    return true;
+  }
 
+  public function delete($where)
+  {
+    $q='DELETE FROM ' .$this->table.' WHERE'.$where; 
+    $this->execute($q);
     return true;
   }
 

@@ -6,9 +6,10 @@ define('TITLE', 'Cadastrar vaga');
 
 use src\model\Vaga;
 
+$vaga = new Vaga;
 
 if(isset($_POST['Enviar'])){
-  $vaga = new Vaga;
+  
 
   $vaga->titulo = $_POST['titulo']; //enviando dados 
   $vaga->descricao = $_POST['descricao'];
